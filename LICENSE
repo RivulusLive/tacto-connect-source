@@ -1,0 +1,25 @@
+Rivulus Source Available Software License, Version 1.0
+
+Copyright (c) 2026 Aman Khanna
+
+Permission is hereby granted to any person to access and read the source code
+solely for the purposes of review, audit, evaluation, or verification, and to
+compile the source code without modification for those purposes.
+
+The software may be compiled and run only in its original, unmodified form.
+Compilation and execution are permitted solely to evaluate, test, or verify the
+software, including confirming that independently compiled binaries correspond
+to binaries distributed by the copyright holder.
+
+No other rights are granted. In particular, you may not:
+
+  • modify, adapt, or create derivative works of the source code;
+  • distribute, sublicense, publish, or share the source code or any compiled output;
+  • use the software or any compiled output as part of another work, product,
+    or service.
+
+This license does not grant any rights in patents or trademarks.
+
+The software is provided “AS IS”, without warranty of any kind, express or
+implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose, and noninfringement.

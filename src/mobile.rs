@@ -47,9 +47,14 @@ async fn list_signalling_servers() -> Vec<String> {
 	}
 }
 
-async fn list_ice_servers() -> Vec<RTCIceServer> {
+async fn list_ice_servers(user_id: &str) -> Vec<RTCIceServer> {
+	let client = reqwest::Client::new();
 	match async {
-		let response = reqwest::get(format!("{}/ice_servers.json", crate::ORIGIN)).await?;
+		let response = client
+			.get(format!("{}/ice_servers.json", crate::ORIGIN))
+			.header(reqwest::header::COOKIE, format!("userId={}", user_id))
+			.send()
+			.await?;
 		let bytes = response.bytes().await?;
 		Ok::<Vec<RTCIceServer>, anyhow::Error>(serde_json::from_slice(&bytes)?)
 	}
@@ -64,13 +69,11 @@ async fn list_ice_servers() -> Vec<RTCIceServer> {
 					..Default::default()
 				},
 				RTCIceServer {
-					urls: vec!["stun:relay1.expressturn.com:3480".to_owned()],
+					urls: vec![
+						"stun:stun.cloudflare.com:3478".to_owned(),
+						"stun:stun.cloudflare.com:53".to_owned(),
+					],
 					..Default::default()
-				},
-				RTCIceServer {
-					urls: vec!["turn:relay1.expressturn.com:3480".to_owned()],
-					username: "000000002071650254".to_owned(),
-					credential: "qiRTJGi9gcMTJhAVN/EAx2lPoaE=".to_owned(),
 				},
 			]
 		}
@@ -99,7 +102,7 @@ async fn connect(
 	let api = APIBuilder::new().with_setting_engine(settings).build();
 	let pc = api
 		.new_peer_connection(RTCConfiguration {
-			ice_servers: list_ice_servers().await,
+			ice_servers: list_ice_servers(user_id).await,
 			..Default::default()
 		})
 		.await?;

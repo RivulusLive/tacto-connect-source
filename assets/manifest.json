@@ -2,7 +2,7 @@
 	"Name": "Tacto Connect",
 	"Description": "OpenAction plugin providing Tacto keyboard and mobile device support",
 	"Author": "Rivulus",
-	"Version": "1.2.0",
+	"Version": "1.2.1",
 	"CodePaths": {
 		"x86_64-pc-windows-msvc": "x86_64-pc-windows-msvc/bin/tacto-connect.exe",
 		"x86_64-apple-darwin": "x86_64-apple-darwin/bin/tacto-connect",

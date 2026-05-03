@@ -1,13 +1,13 @@
 [package]
 name = "tacto-connect"
-version = "1.2.0"
+version = "1.2.1"
 edition = "2024"
 
 [dependencies]
 tokio = "1.48"
-tokio-tungstenite = { version = "0.28", features = ["native-tls"] }
-webrtc = "0.14"
-global-hotkey = { version = "0.7", features = ["serde"] }
+tokio-tungstenite = { version = "0.29", features = ["native-tls"] }
+webrtc = "0.17"
+global-hotkey = { version = "0.8", features = ["serde"] }
 eframe = "0.33"
 reqwest = { version = "0.12", features = ["blocking"] }
 base64 = "0.22"

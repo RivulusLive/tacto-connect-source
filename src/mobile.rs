@@ -47,12 +47,11 @@ async fn list_signalling_servers() -> Vec<String> {
 	}
 }
 
-async fn list_ice_servers(user_id: &str) -> Vec<RTCIceServer> {
+async fn list_ice_servers() -> Vec<RTCIceServer> {
 	let client = reqwest::Client::new();
 	match async {
 		let response = client
 			.get(format!("{}/ice_servers.json", crate::ORIGIN))
-			.header(reqwest::header::COOKIE, format!("userId={}", user_id))
 			.send()
 			.await?;
 		let bytes = response.bytes().await?;
@@ -102,7 +101,7 @@ async fn connect(
 	let api = APIBuilder::new().with_setting_engine(settings).build();
 	let pc = api
 		.new_peer_connection(RTCConfiguration {
-			ice_servers: list_ice_servers(user_id).await,
+			ice_servers: list_ice_servers().await,
 			..Default::default()
 		})
 		.await?;

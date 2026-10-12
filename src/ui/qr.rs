@@ -116,7 +116,7 @@ impl QrState {
 
 	pub fn should_poll(&mut self) -> bool {
 		self.last_poll
-			.map(|t| t.elapsed() >= Duration::from_secs(2))
+			.map(|t| t.elapsed() >= Duration::from_secs(5))
 			.unwrap_or(true)
 	}
 
